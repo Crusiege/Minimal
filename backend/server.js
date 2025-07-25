@@ -13,15 +13,6 @@ const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/posts');
 
 // Middleware
-// Middleware
-app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
-  credentials: true
-}));
-
-->
-
-// Middleware
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (mobile apps, curl, etc.)
@@ -68,6 +59,21 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Root route - fixes "Cannot GET /" error on Render
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Minimal Blog API',
+    status: 'Server is running',
+    version: '1.0.0',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth',
+      posts: '/api/posts'
+    },
+    timestamp: new Date().toISOString()
+  });
+});
+
 // 404 handler for API routes
 app.use('/api/*', (req, res) => {
   res.status(404).json({ message: 'API endpoint not found' });
@@ -96,12 +102,12 @@ const connectDB = async () => {
       useUnifiedTopology: true,
     });
 
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    console.log(MongoDB Connected: ${conn.connection.host});
     
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-      console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(Server running on port ${PORT});
+      console.log(Environment: ${process.env.NODE_ENV || 'development'});
     });
   } catch (error) {
     console.error('Database connection error:', error);
@@ -121,4 +127,4 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-connectDB(); 
+connectDB();
