@@ -2,7 +2,9 @@ import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { Heart, User, Calendar, Eye, Plus, Menu, X, LogOut } from 'lucide-react';
 import './App.css';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://minimal-oh4a.onrender.com/api'
+  : 'http://localhost:5000/api';
 
 // AuthForm component - optimized to prevent weird behaviors
 const AuthForm = React.memo(({ isLogin = true, formData, setFormData, handleLogin, loading, error, setCurrentView, setError }) => {
