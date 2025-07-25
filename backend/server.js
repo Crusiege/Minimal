@@ -102,7 +102,7 @@ const connectDB = async () => {
       useUnifiedTopology: true,
     });
 
-    console.log(MongoDB Connected: ${conn.connection.host});
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
     
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
