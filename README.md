@@ -154,20 +154,6 @@ Make sure you have the following software installed:
     npm install
     ```
 
-4.  **Seed the Database (Optional)**
-    To populate the database with sample users and posts, run the seeder script from the `backend` directory.
-
-    ```bash
-    cd ../backend
-    npm run seed
-    ```
-
-    **Sample Login Credentials:**
-
-      - `john@example.com` | `Password123`
-      - `jane@example.com` | `Password123`
-      - `alex@example.com` | `Password123`
-
 ### Running the Application
 
 You'll need two separate terminal windows to run the frontend and backend servers concurrently.
@@ -219,35 +205,3 @@ npm start
 | `PUT` | `/api/posts/:id/view` | Increment the view count | No |
 
 -----
-
-## Testing
-
-Use `curl` or any API client to perform basic health checks and test endpoints.
-
-**Check Server Health:**
-
-```bash
-curl http://localhost:5000/api/health
-```
-
-**Register a New User:**
-
-```bash
-curl -X POST http://localhost:5000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Test User","email":"test@example.com","password":"Password123"}'
-```
-
-**Fetch All Posts:**
-
-```bash
-curl http://localhost:5000/api/posts
-```
-
------
-
-
-
-
-
-
