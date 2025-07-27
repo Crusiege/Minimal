@@ -246,25 +246,6 @@ curl http://localhost:5000/api/posts
 
 -----
 
-## Deployment
-
-### Backend (Heroku, Railway, etc.)
-
-1.  Set all required environment variables in your production service settings.
-2.  Update `MONGODB_URI` to point to your production database.
-3.  Update `CLIENT_URL` to match your deployed frontend's URL.
-
-### Frontend (Vercel, Netlify, etc.)
-
-1.  Build the production-ready application:
-    ```bash
-    cd frontend
-    npm run build
-    ```
-2.  Deploy the generated `build` folder to your hosting service.
-3.  Set the environment variable for your API's base URL (e.g., `REACT_APP_API_URL=https://your-backend-url.com`).
-
------
 
 
 
